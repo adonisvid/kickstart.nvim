@@ -136,7 +136,7 @@ vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 500
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -155,10 +155,21 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 15
+vim.opt.scrolloff = 5
+
+-- My Settings
+vim.opt.wrap = true
+vim.opt.wrapmargin = 8
+vim.opt.linebreak = true
+vim.opt.breakindentopt = 'shift:4'
+vim.opt.showbreak = '↪'
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+
+-- NOTE: MY CUSTOM KEYMAPS
+vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<S-Tab>', '<cmd>bprev<CR>', { desc = 'Previous buffer' })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -699,7 +710,8 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        cs = { 'omnisharp', 'csharpier' },
+        cpp = { 'clang-format' },
+        cs = { 'clang-format' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
